@@ -16,13 +16,14 @@ namespace DemoFunction
 
         [Function("DemoFunction")]
         public HttpResponseData Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] 
+            [HttpTrigger(AuthorizationLevel.Function, "get", "post")] 
             HttpRequestData req)
         {
             _logger.LogInformation("C# HTTP trigger function processed a request.");
 
             var response = req.CreateResponse(HttpStatusCode.OK);
-            
+
+            response.WriteString("Hello Function");
             return response;
         }
     }
